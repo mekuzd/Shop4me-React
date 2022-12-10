@@ -8,6 +8,7 @@ import { useContext } from "react";
 import { Context } from "../../Provider/Context";
 import { Skeleton } from "antd";
 import http from "../config/http";
+import Footer from "../component/Footer";
 
 const Productsview = () => {
   const { Theme, addToCart } = useContext(Context);
@@ -38,7 +39,9 @@ const Productsview = () => {
   if (loading) {
     return (
       <DefaultLayout>
-        <Skeleton active />
+        <main>
+          <Skeleton active />
+        </main>
       </DefaultLayout>
     );
   }
@@ -73,7 +76,7 @@ const Productsview = () => {
                   </button>
                 </p>
                 <div className="">
-                  <div className="fs-4">
+                  <div className="fs-5">
                     Rating:
                     <Rate disabled value={item?.rating?.rate} />
                   </div>
@@ -91,6 +94,7 @@ const Productsview = () => {
                 </Link>
               </div>
             </main>
+            <Footer />
           </main>
         )}
       </DefaultLayout>

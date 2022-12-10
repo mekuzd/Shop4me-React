@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import DefaultLayout from "../Layouts/DefaultLayout";
 import { Context } from "../../Provider/Context";
 import http from "../config/http";
+import Footer from "../component/Footer";
 // import { Modal } from "antd";
 
 const Products = () => {
@@ -71,7 +72,7 @@ const Products = () => {
       <DefaultLayout>
         {!loading && products.length > 0 && (
           <main>
-            <h2 className="text-center text-secondary fw-bold my-2">
+            <h2 className="text-center text-secondary fw-bold fs-3 my-2">
               Store Products
             </h2>
             <div className="underline"></div>
@@ -152,6 +153,7 @@ const Products = () => {
                 </div>
               ))}
             </div>
+            <Footer />
           </main>
         )}
       </DefaultLayout>

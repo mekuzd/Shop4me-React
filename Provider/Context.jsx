@@ -11,11 +11,10 @@ const ContextProvider = ({ children }) => {
       : [],
   );
 
-  localStorage.setItem("cartItem", JSON.stringify(Cart));
-
   const addToCart = (item) => {
-    setCart([...Cart, { ...item, Quantity: 1, Total: item.price }]);
-    localStorage.setItem("cartItem", JSON.stringify(Cart));
+    let newCart = [...Cart, { ...item, Quantity: 1, Total: item.price }];
+    setCart(newCart);
+    localStorage.setItem("cartItem", JSON.stringify(newCart));
   };
 
   const initialState = {

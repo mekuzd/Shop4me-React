@@ -3,6 +3,7 @@ import { ShoppingCartOutlined } from "@ant-design/icons";
 import { useContext } from "react";
 import { Context } from "../../Provider/Context";
 import { Switch } from "@chakra-ui/react";
+import { useRef } from "react";
 
 const Navbar = () => {
   const { Theme, setTheme, Cart } = useContext(Context);
@@ -18,17 +19,19 @@ const Navbar = () => {
     <nav
       className={`d-flex  d-sm-flex shadow justify-content-around align-items-center   bg-${Theme} p-3  fixed-top`}
     >
-      <Link to={"/"} className="text-warning fs-3 ">
+      <Link to={"/"} className="text-warning fs-1 ">
         Shop4me
       </Link>
 
       <div className="d-none d-sm-flex justify-content-between align-items-center nav-page">
-        <Link to={"/"} className="text-warning fs-5">
-          Home
-        </Link>
         <Link to={"/products"} className="text-warning ms-2 fs-5">
-          product
+          Products
         </Link>
+
+        <Link to={"/signup"} className="text-warning fs-5">
+          SignUp
+        </Link>
+
         <Link to={"/login"} className="ms-2 text-warning fs-5">
           Login
         </Link>
@@ -36,7 +39,7 @@ const Navbar = () => {
 
       <div
         className="d-flex justify-content-between align-items-center"
-        style={{ width: "150px" }}
+        style={{ width: "200px" }}
       >
         <Link to={"/cart"} className="text-warning   position-relative ">
           <ShoppingCartOutlined style={{ fontSize: "40px" }} />
@@ -45,7 +48,7 @@ const Navbar = () => {
           </span>
         </Link>
         <div>
-          <button className={`bg-${Theme} border-0 text-warning`}>
+          <button className={`bg-${Theme} border-0 ms-4 text-warning`}>
             {Theme == "light" ? "Dark" : "light"}
           </button>
           <Switch
