@@ -3,7 +3,6 @@ import { ShoppingCartOutlined } from "@ant-design/icons";
 import { useContext } from "react";
 import { Context } from "../../Provider/Context";
 import { Switch } from "@chakra-ui/react";
-import { useRef } from "react";
 
 const Navbar = () => {
   const { Theme, setTheme, Cart } = useContext(Context);

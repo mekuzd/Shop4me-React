@@ -1,5 +1,7 @@
 :root {
-  font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
+  /* font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
+   */
+  font-family: "Poppins", sans-serif;
   font-size: 16px;
   line-height: 24px;
   font-weight: 400;
@@ -17,6 +19,11 @@
 }
 .error img {
   width: 100%;
+}
+.spinner-border {
+  height: 100px;
+  width: 100px;
+  margin-top: 50px;
 }
 main {
   margin-top: 100px;
@@ -65,7 +72,9 @@ a:hover {
   color: white;
 }
 footer {
-  margin-top: 200px;
+  width: 100%;
+
+  margin-top: 250px;
 }
 body {
   margin: 0px;
@@ -156,7 +165,7 @@ thead {
   padding-top: 30px;
 }
 label {
-  font-size: 18px;
+  font-size: 19px;
   color: goldenrod;
   display: flex;
   justify-content: start;
@@ -169,4 +178,8 @@ label {
 input {
   font-size: 18px;
   padding: 10px;
+}
+.alert p {
+  font-size: 20px;
+  color: goldenrod;
 }

@@ -58,10 +58,7 @@ const Products = () => {
           className=" d-flex justify-content-center"
           style={{ marginTop: "70px" }}
         >
-          <div
-            className="text-warning spinner-border"
-            style={{ width: "100px", height: "100px" }}
-          ></div>
+          <div className="text-warning spinner-border"></div>
         </div>
       </DefaultLayout>
     );

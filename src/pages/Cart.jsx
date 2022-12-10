@@ -4,9 +4,19 @@ import DefaultLayout from "../Layouts/DefaultLayout";
 import { useContext } from "react";
 import { Context } from "../../Provider/Context";
 import { AiFillDelete } from "react-icons/ai";
+import Alert from "../component/Alert";
 
 const Cart = () => {
-  const { Theme, Cart, setCart } = useContext(Context);
+  const {
+    Theme,
+    Cart,
+    setCart,
+    alert,
+    setalert,
+    alertMessage,
+    setalertMessage,
+  } = useContext(Context);
+
   const [Total, setTotal] = useState(0);
 
   const subTotal = Cart.map((item) => {
@@ -29,6 +39,9 @@ const Cart = () => {
   const RemoveCartItem = (id) => {
     let NewItem = Cart.filter((item) => item.id !== id);
     setCart(NewItem);
+    setalertMessage("ITEM REMOVED");
+    setalert(true);
+
     localStorage.setItem("cartItem", JSON.stringify(Cart));
   };
 
@@ -66,6 +79,9 @@ const Cart = () => {
     }
   };
 
+  const closeAlert = () => {
+    setalert(false);
+  };
   // if cart is empty
   if (Cart.length == 0) {
     return (
@@ -96,6 +112,11 @@ const Cart = () => {
           <main>
             {/* main body */}
             <div className={` bg-${Theme}  card-body cart-body `}>
+              <div className="text-center">
+                {alert && (
+                  <Alert closeAlert={closeAlert} alertMessage={alertMessage} />
+                )}{" "}
+              </div>
               <div className="d-flex justify-content-between">
                 <div>
                   {" "}
@@ -118,7 +139,6 @@ const Cart = () => {
                   </button>
                 </div>
               </div>
-
               {/* Table  */}
               <table
                 className={`table table-borderless border  table-${Theme}  mt-5`}
@@ -197,7 +217,10 @@ const Cart = () => {
                 <h1 className="fs-4 fw-bold ">
                   order Total: <span className="ms-4">${Total}</span>
                 </h1>
-                <Link className="btn w-100 btn-outline-warning  my-2 fw-bold">
+                <Link
+                  to={"/login"}
+                  className="btn w-100 btn-outline-warning  my-2 fw-bold"
+                >
                   LOGIN
                 </Link>
               </div>

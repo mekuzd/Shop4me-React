@@ -11,6 +11,8 @@ const ContextProvider = ({ children }) => {
       : [],
   );
 
+  const [alert, setalert] = useState(false);
+  const [alertMessage, setalertMessage] = useState("");
   const addToCart = (item) => {
     let newCart = [...Cart, { ...item, Quantity: 1, Total: item.price }];
     setCart(newCart);
@@ -23,6 +25,10 @@ const ContextProvider = ({ children }) => {
     Cart,
     setCart,
     addToCart,
+    alert,
+    setalert,
+    alertMessage,
+    setalertMessage,
   };
 
   return <Context.Provider value={initialState}>{children}</Context.Provider>;
