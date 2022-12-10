@@ -150,3 +150,23 @@ thead {
   margin: auto;
   width: auto;
 }
+.form {
+  width: 500px;
+  margin: auto;
+  padding-top: 30px;
+}
+label {
+  font-size: 18px;
+  color: goldenrod;
+  display: flex;
+  justify-content: start;
+}
+.form-control :focus {
+  outline: black !important;
+  border-color: black !important;
+  box-shadow: none !important;
+}
+input {
+  font-size: 18px;
+  padding: 10px;
+}
