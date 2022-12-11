@@ -40,6 +40,13 @@ const Signup = () => {
       setalert(true);
       setalertMessage("include @ in email");
     } else if (
+      !state.current.email.includes("@") &&
+      state.current.firstname &&
+      state.current.lastname
+    ) {
+      setalert(true);
+      setalertMessage("include @ in email");
+    } else if (
       state.current.email.includes("@") &&
       state.current.firstname &&
       state.current.lastname &&
@@ -49,7 +56,6 @@ const Signup = () => {
       setalertMessage("password length at least 8 characters");
     } else {
       setalert(true);
-
       setalertMessage("Registered Succesfully");
       let newStore = [...Store, { ...state.current }];
       setStore(newStore);
@@ -86,6 +92,7 @@ const Signup = () => {
               <div>
                 <label htmlFor="firstname">First Name</label>
                 <input
+                  required
                   ref={firstname}
                   onChange={(e) => (state.current.firstname = e.target.value)}
                   type="text"
@@ -98,6 +105,7 @@ const Signup = () => {
               <div>
                 <label htmlFor="lastname">Last Name</label>
                 <input
+                  required
                   onChange={(e) => (state.current.lastname = e.target.value)}
                   type="text"
                   id="lastname"
@@ -109,6 +117,7 @@ const Signup = () => {
               <div>
                 <label htmlFor="email">Email</label>
                 <input
+                  required
                   onChange={(e) => (state.current.email = e.target.value)}
                   type="text"
                   id="email"
@@ -120,6 +129,7 @@ const Signup = () => {
               <div>
                 <label htmlFor="password">Password</label>
                 <input
+                  required
                   onChange={(e) => (state.current.password = e.target.value)}
                   type="password"
                   id="password"

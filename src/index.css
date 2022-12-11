@@ -36,7 +36,9 @@ a {
 a:hover {
   color: #535bf2;
 }
-
+.bar {
+  cursor: pointer;
+}
 .nav-page {
   width: 250px;
 }
