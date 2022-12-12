@@ -1,46 +1,89 @@
-import { useState } from "react";
-import http from "../config/http";
-
 import DefaultLayout from "../Layouts/DefaultLayout";
-import Error404 from "./error404";
+import Footer from "../component/Footer";
+import { useContext, useRef } from "react";
+import { Context } from "../../Provider/Context";
+import Alert from "../component/Alert";
+import { Link } from "react-router-dom";
 
 const Login = () => {
-  const [location, setlocation] = useState("");
-  const [address, setaddress] = useState("");
+  const { Theme, alert, setalert, alertMessage, setalertMessage } =
+    useContext(Context);
 
-  async function getLocation() {
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(async (position) => {
-        try {
-          setlocation(
-            "Latitude: " +
-              position.coords.latitude +
-              " Longitude: " +
-              position.coords.longitude,
-          );
-
-          const response = await http.get(
-            `/v1/reverse?key=pk.69aeb839e94a88962de2ddec542f87ec&lat=${position.coords.latitude}&lon=${position.coords.longitude}&format=json`,
-          );
-          setaddress(response.data.display_name);
-        } catch (error) {
-          console.log(error);
-        }
-      });
-    } else {
-      location = "Geolocation is not supported by this browser.";
+  const state = useRef({ email: "", password: "" });
+  const handleLogin = (e) => {
+    e.preventDefault();
+    if (!state.current.email.includes("@")) {
+      setalert(true);
+      setalertMessage("include @ in email");
+    } else if (state.current.password.length < 8) {
+      setalert(true);
+      setalertMessage("password length is less than 8");
     }
-  }
+  };
+  const closeAlert = () => {
+    setalert(false);
+  };
 
   return (
-    <DefaultLayout>
-      <main>Login page </main>
-      <p>Location:{location}</p>
-      <p>Address:{address}</p>
-      <button className="btn btn-secondary" onClick={getLocation}>
-        show position
-      </button>
-    </DefaultLayout>
+    <>
+      <DefaultLayout>
+        <main className={`bg-${Theme}  `}>
+          <div className=" text-center  py-5 ">
+            {alert && (
+              <Alert closeAlert={closeAlert} alertMessage={alertMessage} />
+            )}
+            <h1 className="fs-1 fw-bold text-warning">Login</h1>
+
+            {/* form  */}
+            <div className="form ">
+              <form
+                action=""
+                onSubmit={handleLogin}
+                className={`form-control bg-${Theme} shadow p-3`}
+              >
+                {/* Email  */}
+                <div>
+                  <label htmlFor="email">Email</label>
+                  <input
+                    required
+                    onChange={(e) => (state.current.email = e.target.value)}
+                    type="text"
+                    id="email"
+                    className="form-control"
+                  />
+                </div>{" "}
+                <br />
+                {/* password  */}
+                <div>
+                  <label htmlFor="password">Password</label>
+                  <input
+                    required
+                    onChange={(e) => (state.current.password = e.target.value)}
+                    type="password"
+                    id="password"
+                    className="form-control"
+                  />
+                </div>
+                <button
+                  type="submit"
+                  className="btn btn-outline-warning fs-5 w-25 my-4"
+                >
+                  Login
+                </button>
+              </form>
+              <div className="my-3">
+                <Link className="text-warning fs-5"> forgot password ?</Link>
+                <br />
+                <Link className="text-warning fs-5" to={"/signup"}>
+                  create an account
+                </Link>
+              </div>
+            </div>
+          </div>
+        </main>
+      </DefaultLayout>
+      <footer>{<Footer />}</footer>
+    </>
   );
 };
 export default Login;

@@ -54,4 +54,3 @@ ReactDOM.createRoot(document.getElementById("root")).render(
     </ChakraProvider>
   </React.StrictMode>,
 );
-// parts of a URL

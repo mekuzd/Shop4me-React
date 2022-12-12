@@ -66,7 +66,6 @@ a:hover {
   background-color: rgb(85, 50, 8);
   place-items: center;
   width: 100%;
-  bottom: 0;
   height: 100px;
 }
 .footer h1 {
@@ -75,7 +74,9 @@ a:hover {
 }
 footer {
   width: 100%;
-
+  margin-top: 100px;
+}
+.homeFooter {
   margin-top: 250px;
 }
 body {
@@ -157,15 +158,22 @@ thead {
   font-size: 19px;
 }
 .cart-body {
-  max-width: 75%;
+  width: 75%;
   margin: auto;
-  width: auto;
+  /* width: auto; */
 }
 .form {
-  width: 500px;
+  width: 100%;
+  padding: 10px;
   margin: auto;
   padding-top: 30px;
 }
+@media only screen and (min-width: 600px) {
+  .form {
+    width: 500px;
+  }
+}
+
 label {
   font-size: 19px;
   color: goldenrod;

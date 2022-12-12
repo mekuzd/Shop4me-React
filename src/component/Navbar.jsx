@@ -1,10 +1,9 @@
 import { Link } from "react-router-dom";
 import { ShoppingCartOutlined } from "@ant-design/icons";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { Context } from "../../Provider/Context";
 import { Switch } from "@chakra-ui/react";
 import { FaBars } from "react-icons/fa";
-import { useState } from "react";
 import Offcanvas from "react-bootstrap/Offcanvas";
 
 const Navbar = () => {

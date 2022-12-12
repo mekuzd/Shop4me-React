@@ -144,18 +144,18 @@ const Cart = () => {
                 className={`table table-borderless border  table-${Theme}  mt-5`}
               >
                 <thead className="text-warning ">
-                  <tr>
-                    <th>item</th>
-                    <th>Price</th>
-                    <th>Quantity</th>
-                    <th>Subtotal</th>
+                  <tr scope="row">
+                    <th scope="col">item</th>
+                    <th scope="col">Price</th>
+                    <th scope="col">Quantity</th>
+                    <th scope="col">Subtotal</th>
                   </tr>
                 </thead>
                 <tbody>
                   {Cart.map((item) => (
                     <tr key={item.id} className="cartItem" style={{}}>
                       {/* item and title */}
-                      <td>
+                      <td scope="col">
                         <span className="">
                           <span>
                             <img src={item?.image} alt={item?.title} />
@@ -165,13 +165,13 @@ const Cart = () => {
                         </span>
                       </td>
                       {/* item price  */}
-                      <td className="fs-5">
+                      <td scope="col" className="fs-5">
                         <span>$</span>
                         {item?.price}
                       </td>
 
                       {/* increase and decrease btn */}
-                      <td>
+                      <td scope="col">
                         {" "}
                         <span
                           className="d-flex justify-content-between "
@@ -195,12 +195,12 @@ const Cart = () => {
                         </span>
                       </td>
                       {/* total  */}
-                      <td className="fs-5">
+                      <td className="fs-5" scope="col">
                         <span>$</span>
                         {item?.Total}
                       </td>
                       {/* button remove  */}
-                      <td>
+                      <td scope="col">
                         <AiFillDelete
                           onClick={() => RemoveCartItem(item.id)}
                           style={{

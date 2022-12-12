@@ -2,7 +2,6 @@ import axios from "axios";
 
 const http = axios.create({
   baseURL: "https://fakestoreapi.com",
-  // baseURL: "https://us1.locationiq.com",
 });
 
 http.interceptors.request.use(

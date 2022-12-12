@@ -96,7 +96,7 @@ function App() {
           </section>
         </main>
       </DefaultLayout>
-      <footer>
+      <footer className="homeFooter">
         <Footer />
       </footer>
     </>
