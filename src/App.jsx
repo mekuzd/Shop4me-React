@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { useContext, useEffect } from "react";
 import { Context } from "../Provider/Context";
 import DefaultLayout from "./Layouts/DefaultLayout";
-
+``;
 import Footer from "./component/Footer";
 
 function App() {

@@ -98,7 +98,6 @@ body {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  margin-top: 10px;
 }
 table {
   width: 100% !important;

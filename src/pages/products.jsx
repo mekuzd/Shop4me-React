@@ -7,19 +7,14 @@ import DefaultLayout from "../Layouts/DefaultLayout";
 import { Context } from "../../Provider/Context";
 import http from "../config/http";
 import Footer from "../component/Footer";
-// import { Modal } from "antd";
 
 const Products = () => {
-  let [category, setcategory] = useState("");
   const [products, setproducts] = useState([]);
   const [loading, setloading] = useState(true);
   const [selCategory, setSelcategory] = useState([]);
   const { Theme, addToCart } = useContext(Context);
 
-  //  addtocart function
-
   const categoryBtn = (category) => {
-    setcategory(category);
     const Menucategory = products.filter(
       (product) => product.category === category,
     );
@@ -77,36 +72,31 @@ const Products = () => {
             <div className=" Categorybtn my-4">
               <button
                 className="btn btn-outline-warning mx-2"
-                onClick={(e) => categoryBtn(e.target.dataset.id)}
-                data-id="All"
+                onClick={() => categoryBtn("All")}
               >
                 All
               </button>
               <button
                 className="btn btn-outline-warning mx-2"
-                onClick={(e) => categoryBtn(e.target.dataset.id)}
-                data-id="electronics"
+                onClick={() => categoryBtn("electronics")}
               >
                 electronics
               </button>
               <button
                 className="btn btn-outline-warning mx-2"
-                onClick={(e) => categoryBtn(e.target.dataset.id)}
-                data-id="jewelery"
+                onClick={() => categoryBtn("jewelery")}
               >
                 jewelery
               </button>
               <button
                 className="btn btn-outline-warning mx-2"
-                onClick={(e) => categoryBtn(e.target.dataset.id)}
-                data-id="men's clothing"
+                onClick={() => categoryBtn(`men's clothing`)}
               >
                 men's clothing
               </button>
               <button
                 className="btn btn-outline-warning mx-2"
-                onClick={(e) => categoryBtn(e.target.dataset.id)}
-                data-id="women's clothing"
+                onClick={() => categoryBtn(`women's clothing`)}
               >
                 women's clothing
               </button>
