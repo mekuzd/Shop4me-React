@@ -69,14 +69,12 @@ const Products = () => {
       <DefaultLayout>
         {!loading && products.length > 0 && (
           <main>
-            <h2 className="text-center text-secondary fw-bold fs-3 my-2">
+            <h2 className="text-center text-secondary fw-bold fs-3 m-2">
               Store Products
             </h2>
-            <div className="underline"></div>
-
+            <div className="underline "></div>
             {/* category buttons   */}
-
-            <div className=" Categorybtn my-2">
+            <div className=" Categorybtn my-4">
               <button
                 className="btn btn-outline-warning mx-2"
                 onClick={(e) => categoryBtn(e.target.dataset.id)}
@@ -113,9 +111,7 @@ const Products = () => {
                 women's clothing
               </button>
             </div>
-
             {/* display products */}
-
             <div className="products">
               {selCategory.map((item) => (
                 <div
@@ -150,7 +146,9 @@ const Products = () => {
                 </div>
               ))}
             </div>
-            <Footer />
+            <footer>
+              <Footer />
+            </footer>{" "}
           </main>
         )}
       </DefaultLayout>
@@ -165,32 +163,3 @@ const Products = () => {
   );
 };
 export default Products;
-
-/*if a modal display was to be used to view products of each item */
-
-// const [isModalOpen, setIsModalOpen] = useState(false);
-// const [data, setdata] = useState({});
-
-// const showModal = (item) => {
-//   setIsModalOpen(true);
-//   setdata(item);
-// };
-/* <Modal
-        // title="Basic Modal"
-        footer={null}
-        open={isModalOpen}
-        onOk={handleOk}
-        data={data}
-        onCancel={handleCancel}
-      >
-        <p>{data.title}</p>
-        <div style={{ width: "200px" }}>
-          <img src={data.image} alt="" style={{ width: "100%" }} />
-        </div>
-        <button
-          className="btn btn-warning my-2 mx-auto "
-          onClick={() => addToCart(data)}
-        >
-          Add to Cart
-        </button>
-      </Modal> */

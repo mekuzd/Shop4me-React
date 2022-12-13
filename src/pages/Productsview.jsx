@@ -40,7 +40,7 @@ const Productsview = () => {
     return (
       <DefaultLayout>
         <main>
-          <Skeleton active />
+          <Skeleton active square />
         </main>
       </DefaultLayout>
     );

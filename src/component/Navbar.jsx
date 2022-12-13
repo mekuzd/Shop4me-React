@@ -32,10 +32,10 @@ const Navbar = () => {
       </div>
 
       <Offcanvas show={show} onHide={handleClose}>
-        <Offcanvas.Header
-          closeButton
-          className="d-flex justify-content-end"
-        ></Offcanvas.Header>
+        <Offcanvas.Header closeButton>
+          {" "}
+          <h1 className="fs-3 fw-bold text-warning">Shop4me</h1>{" "}
+        </Offcanvas.Header>
         <Offcanvas.Body>
           <div className=" d-flex flex-column justify-content-end gap-3 align-items-center ">
             <Link to={"/products"} className="text-warning ms-2 fs-5">
@@ -85,9 +85,7 @@ const Navbar = () => {
         <div>
           <Link to={"/cart"} className="text-warning   position-relative ">
             <ShoppingCartOutlined style={{ fontSize: "40px" }} />
-            <span className="position-absolute top-0 start-100">
-              {Cart.length}
-            </span>
+            <span className="position-absolute ">{Cart.length}</span>
           </Link>
         </div>
         <div>

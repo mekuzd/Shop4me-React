@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { Context } from "../Provider/Context";
 import DefaultLayout from "./Layouts/DefaultLayout";
 
@@ -93,12 +93,13 @@ function App() {
                 </p>
               </div>
             </main>
+
+            <footer>
+              <Footer />
+            </footer>
           </section>
         </main>
       </DefaultLayout>
-      <footer className="homeFooter">
-        <Footer />
-      </footer>
     </>
   );
 }

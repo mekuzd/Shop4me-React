@@ -75,7 +75,7 @@ const Login = () => {
                 <Link className="text-warning fs-5"> forgot password ?</Link>
                 <br />
                 <Link className="text-warning fs-5" to={"/signup"}>
-                  create an account
+                  Create an account
                 </Link>
               </div>
             </div>
