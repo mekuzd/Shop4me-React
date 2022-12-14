@@ -6,12 +6,31 @@ import Alert from "../component/Alert";
 import { Link } from "react-router-dom";
 
 const Login = () => {
-  const { Theme, alert, setalert, alertMessage, setalertMessage } =
+  const { Theme, alert, setalert, alertMessage, setalertMessage, Store } =
     useContext(Context);
 
   const state = useRef({ email: "", password: "" });
+
   const handleLogin = (e) => {
     e.preventDefault();
+    let isregisteredUser = false;
+    Store.map((store) => {
+      if (
+        store.email === state.current.email &&
+        store.password === state.current.password
+      ) {
+        isregisteredUser = true;
+      }
+    });
+
+    if (isregisteredUser == true) {
+      setalert(true);
+      setalertMessage("Login successful");
+    } else {
+      setalert(true);
+      setalertMessage("acc not registered go to sign up");
+    }
+
     if (!state.current.email.includes("@")) {
       setalert(true);
       setalertMessage("include @ in email");

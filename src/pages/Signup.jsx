@@ -14,14 +14,16 @@ const Signup = () => {
     email: "",
     password: "",
   });
-  const [Store, setStore] = useState(
-    localStorage.getItem("users")
-      ? JSON.parse(localStorage.getItem("users"))
-      : [],
-  );
 
-  const { Theme, alert, setalert, alertMessage, setalertMessage } =
-    useContext(Context);
+  const {
+    Theme,
+    alert,
+    setalert,
+    alertMessage,
+    setalertMessage,
+    Store,
+    setStore,
+  } = useContext(Context);
 
   const firstname = useRef(null);
 

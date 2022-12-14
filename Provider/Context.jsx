@@ -11,6 +11,12 @@ const ContextProvider = ({ children }) => {
       : [],
   );
 
+  const [Store, setStore] = useState(
+    localStorage.getItem("users")
+      ? JSON.parse(localStorage.getItem("users"))
+      : [],
+  );
+
   const [alert, setalert] = useState(false);
   const [alertMessage, setalertMessage] = useState("");
   const addToCart = (item) => {
@@ -20,6 +26,8 @@ const ContextProvider = ({ children }) => {
   };
 
   const initialState = {
+    Store,
+    setStore,
     Theme,
     setTheme,
     Cart,
