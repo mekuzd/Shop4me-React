@@ -14,7 +14,11 @@ const Signup = () => {
     email: "",
     password: "",
   });
-  const [Store, setStore] = useState([]);
+  const [Store, setStore] = useState(
+    localStorage.getItem("users")
+      ? JSON.parse(localStorage.getItem("users"))
+      : [],
+  );
 
   const { Theme, alert, setalert, alertMessage, setalertMessage } =
     useContext(Context);
@@ -23,7 +27,17 @@ const Signup = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (
+    let registeredUser = false;
+    Store.map((store) => {
+      if (store.email === state.current.email) {
+        return (registeredUser = true);
+      }
+    });
+
+    if (registeredUser == true) {
+      setalert(true);
+      setalertMessage("user already registered go to Login");
+    } else if (
       !state.current.email.includes("@") &&
       state.current.firstname &&
       state.current.lastname &&
@@ -47,14 +61,13 @@ const Signup = () => {
       setalert(true);
       setalertMessage("password length at least 8 characters");
     } else {
-      setalert(true);
-      setalertMessage("Registered Succesfully");
       let newStore = [...Store, { ...state.current }];
       setStore(newStore);
+      localStorage.setItem("users", JSON.stringify(newStore));
+      setalert(true);
+      setalertMessage("Registered Succesfully");
     }
   };
-
-  console.log(state.current, Store);
 
   useEffect(() => {
     firstname.current.focus();

@@ -19,11 +19,9 @@ const Cart = () => {
 
   const [Total, setTotal] = useState(0);
 
-  const subTotal = Cart.map((item) => {
+  const totalSum = Cart.map((item) => {
     return item.Total;
-  });
-
-  const totalSum = subTotal.reduce((Total, value) => {
+  }).reduce((Total, value) => {
     return Math.round((Total + value) * 100) / 100;
   }, 0);
 

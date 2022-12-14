@@ -9,7 +9,7 @@ import Offcanvas from "react-bootstrap/Offcanvas";
 const Navbar = () => {
   const { Theme, setTheme, Cart } = useContext(Context);
   const [show, setShow] = useState(false);
-
+  const [drop, setdrop] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   function changeTheme() {
@@ -34,7 +34,9 @@ const Navbar = () => {
       <Offcanvas show={show} onHide={handleClose}>
         <Offcanvas.Header closeButton>
           {" "}
-          <h1 className="fs-3 fw-bold text-warning">Shop4me</h1>{" "}
+          <Link to={"/"} className="fs-3 fw-bold text-warning">
+            Shop4me
+          </Link>{" "}
         </Offcanvas.Header>
         <Offcanvas.Body>
           <div className=" d-flex flex-column justify-content-end gap-3 align-items-center ">
@@ -68,7 +70,6 @@ const Navbar = () => {
         <Link to={"/products"} className="text-warning ms-2 fs-5">
           Products
         </Link>
-
         <Link to={"/signup"} className="text-warning fs-5">
           SignUp
         </Link>
