@@ -26,6 +26,10 @@ const Login = () => {
     if (isregisteredUser == true) {
       setalert(true);
       setalertMessage("Login successful");
+      let input = document.getElementsByTagName("input");
+      for (let index = 0; index < input.length; index++) {
+        input[index].value = "";
+      }
     } else {
       setalert(true);
       setalertMessage("acc not registered go to sign up");

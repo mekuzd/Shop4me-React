@@ -68,6 +68,10 @@ const Signup = () => {
       localStorage.setItem("users", JSON.stringify(newStore));
       setalert(true);
       setalertMessage("Registered Succesfully");
+      let input = document.getElementsByTagName("input");
+      for (let index = 0; index < input.length; index++) {
+        input[index].value = "";
+      }
     }
   };
 
