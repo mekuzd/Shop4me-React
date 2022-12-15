@@ -13,8 +13,11 @@ const Products = () => {
   const [loading, setloading] = useState(true);
   const [selCategory, setSelcategory] = useState([]);
   const { Theme, addToCart } = useContext(Context);
+  const [activeCategory, setactiveCatgory] = useState("All");
+  const [category, setcategory] = useState([]);
 
   const categoryBtn = (category) => {
+    setactiveCatgory(category);
     const Menucategory = products.filter(
       (product) => product.category === category,
     );
@@ -26,6 +29,7 @@ const Products = () => {
   };
 
   let isMounted = true;
+  //fetch products
   useEffect(() => {
     const fetchProduct = async () => {
       try {
@@ -45,6 +49,28 @@ const Products = () => {
       isMounted = false;
     };
   }, []);
+
+  //fetch categories
+  useEffect(() => {
+    const fetchCategory = async () => {
+      try {
+        const response = await http.get("/products/categories");
+        setcategory(response.data);
+      } catch (error) {
+        console.log("error");
+        setcategory([]);
+      }
+    };
+    if (isMounted) {
+      fetchCategory();
+    }
+    return () => {
+      isMounted = false;
+    };
+  }, []);
+
+  // added All to categories
+  let newCategory = ["All", ...category];
 
   if (loading) {
     return (
@@ -70,36 +96,17 @@ const Products = () => {
             <div className="underline "></div>
             {/* category buttons   */}
             <div className=" Categorybtn my-4">
-              <button
-                className="btn btn-outline-warning mx-2"
-                onClick={() => categoryBtn("All")}
-              >
-                All
-              </button>
-              <button
-                className="btn btn-outline-warning mx-2"
-                onClick={() => categoryBtn("electronics")}
-              >
-                electronics
-              </button>
-              <button
-                className="btn btn-outline-warning mx-2"
-                onClick={() => categoryBtn("jewelery")}
-              >
-                jewelery
-              </button>
-              <button
-                className="btn btn-outline-warning mx-2"
-                onClick={() => categoryBtn(`men's clothing`)}
-              >
-                men's clothing
-              </button>
-              <button
-                className="btn btn-outline-warning mx-2"
-                onClick={() => categoryBtn(`women's clothing`)}
-              >
-                women's clothing
-              </button>
+              {newCategory.map((category, index) => (
+                <button
+                  key={index}
+                  className={`  m-3  ${
+                    category == activeCategory && "active-btn"
+                  }`}
+                  onClick={() => categoryBtn(category)}
+                >
+                  {category}
+                </button>
+              ))}
             </div>
             {/* display products */}
             <div className="products">

@@ -93,11 +93,22 @@ body {
     color: #747bff;
   }
 }
-
+.active-btn {
+  border: none;
+  outline: none;
+  box-shadow: 0 3px rgb(255, 217, 4);
+}
 .Categorybtn {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
+}
+.Categorybtn button {
+  background: transparent;
+  border-color: transparent;
+  font-size: 20px;
+  width: 160px;
+  padding: 5px 0px;
 }
 table {
   width: 100% !important;

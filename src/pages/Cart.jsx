@@ -31,7 +31,7 @@ const Cart = () => {
 
   const ClearCart = () => {
     setCart([]);
-    localStorage.clear();
+    localStorage.removeItem("cartItem");
   };
 
   const RemoveCartItem = (id) => {
@@ -39,7 +39,6 @@ const Cart = () => {
     setCart(NewItem);
     setalertMessage("ITEM REMOVED");
     setalert(true);
-
     localStorage.setItem("cartItem", JSON.stringify(NewItem));
   };
 
