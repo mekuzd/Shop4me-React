@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import { useContext, useEffect } from "react";
 import { Context } from "../Provider/Context";
 import DefaultLayout from "./Layouts/DefaultLayout";
-``;
 import Footer from "./component/Footer";
 
 function App() {
@@ -36,11 +35,7 @@ function App() {
               </Link>
             </div>
             <div className="col-sm-5 m-3">
-              <img
-                src="../src/assets/Homepage.jpg"
-                alt=""
-                className="Homepage-img"
-              />
+              <img src="../Homepage.jpg" alt="" className="Homepage-img" />
             </div>
           </main>
           {/* middle */}
