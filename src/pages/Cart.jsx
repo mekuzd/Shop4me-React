@@ -5,6 +5,7 @@ import { useContext } from "react";
 import { Context } from "../../Provider/Context";
 import { AiFillDelete } from "react-icons/ai";
 import Alert from "../component/Alert";
+import Footer from "../component/Footer";
 
 const Cart = () => {
   const { Cart, setCart, alert, setalert, alertMessage, setalertMessage } =
@@ -94,97 +95,115 @@ const Cart = () => {
 
   // if cart is filled
   return (
-    <DefaultLayout>
-      {Cart.length > 0 && (
-        <main>
-          {/* main body */}
-          <div className={`    border-0 card-body    cartbody `}>
-            <div className="text-center ">
-              {alert && (
-                <Alert closeAlert={closeAlert} alertMessage={alertMessage} />
-              )}{" "}
-            </div>
-            <div className="d-flex justify-content-between">
-              <div>
-                {" "}
-                <Link to={"/products"} className="btn btn-outline-warning mb-2">
-                  {" "}
-                  Continue Shopping
-                </Link>
+    <>
+      <DefaultLayout>
+        {Cart.length > 0 && (
+          <main>
+            {/* main body */}
+            <div className={`    border-0 card-body    cartbody `}>
+              <div className="text-center ">
+                {alert && (
+                  <Alert closeAlert={closeAlert} alertMessage={alertMessage} />
+                )}{" "}
               </div>
-              <div>
-                {" "}
-                <button className="btn btn-outline-warning" onClick={ClearCart}>
+              <div className="d-flex justify-content-between">
+                <div>
                   {" "}
-                  Clear Cart{" "}
-                </button>
-              </div>
-            </div>
-            {Cart.map((item) => (
-              <div
-                key={item?.id}
-                className={`my-4  row  card-body  p-4  shadow border d-flex flex-wrap`}
-              >
-                <div className="  col-sm-5">
-                  <img
-                    src={item?.image}
-                    className="text-center"
-                    style={{ width: "100px" }}
-                    alt=""
-                  />
-                  <h1 className="fw-bold fs-4 pt-4"> {item.title}</h1>
-                </div>{" "}
-                <div className="col-sm-7 text-center  mt-2">
-                  <div>
-                    <span className="fw-bold fs-5">price :</span> <br />
-                    <span className="my-4 fs-4 fw-bold"> ${item?.price}</span>
-                    <br />
-                  </div>
-                  <div className="mt-3">
-                    <button
-                      className=" fs-4 "
-                      onClick={() =>
-                        decreaseCartQuantity(item?.id, item?.Quantity)
-                      }
-                    >
-                      -
-                    </button>
-                    <span className="mx-4 fw-bold ">{item.Quantity}</span>
-                    <button
-                      className=" fs-4"
-                      onClick={() => increaseCartQuantity(item?.id)}
-                    >
-                      {" "}
-                      +{" "}
-                    </button>
-                  </div>
-                  <div className="mt-4 ">
-                    <h5 className="fs-4 fw-bold ">Total: ${item.Total} </h5>
-
-                    <AiFillDelete
-                      onClick={() => RemoveCartItem(item.id)}
-                      className="fs-2 text-danger ms-auto"
-                    />
-                  </div>
+                  <Link
+                    to={"/products"}
+                    className="btn btn-outline-warning mb-2"
+                  >
+                    {" "}
+                    Continue Shopping
+                  </Link>
+                </div>
+                <div>
+                  {" "}
+                  <button
+                    className="btn btn-outline-warning"
+                    onClick={ClearCart}
+                  >
+                    {" "}
+                    Clear Cart{" "}
+                  </button>
                 </div>
               </div>
-            ))}
+              {Cart.map((item) => (
+                <div
+                  key={item?.id}
+                  className={`my-4  row  card-body  p-4  shadow border d-flex flex-wrap`}
+                >
+                  <div className="  col-sm-5 ">
+                    <img
+                      src={item?.image}
+                      style={{ width: "100px", margin: "auto" }}
+                      alt=""
+                    />
+                    <h1
+                      className="fw-bold fs-4 mt-5  text-center"
+                      style={{ width: "fit-Content" }}
+                    >
+                      {" "}
+                      {item.title}
+                    </h1>
+                  </div>{" "}
+                  <div className="col-sm-7 text-center  mt-2">
+                    <div>
+                      <span className="fw-bold fs-5">price :</span> <br />
+                      <span className="my-4 fs-4 fw-bold"> ${item?.price}</span>
+                      <br />
+                    </div>
+                    <div className="mt-3">
+                      <button
+                        className=" fs-3"
+                        onClick={() =>
+                          decreaseCartQuantity(item?.id, item?.Quantity)
+                        }
+                      >
+                        -
+                      </button>
+                      <span className="mx-3 fw-bold fs-4 ">
+                        {item.Quantity}
+                      </span>
+                      <button
+                        className=" fs-4"
+                        onClick={() => increaseCartQuantity(item?.id)}
+                      >
+                        {" "}
+                        +{" "}
+                      </button>
+                    </div>
+                    <div className="mt-4 ">
+                      <h5 className="fs-4 fw-bold ">Total: ${item.Total} </h5>
 
-            <div className="  total border ">
-              <h1 className="fs-4 fw-bold ">
-                order Total: <span className="ms-4">${Total}</span>
-              </h1>
-              <Link
-                to={"/login"}
-                className="btn w-100 btn-outline-warning  my-2 fw-bold"
-              >
-                LOGIN
-              </Link>
+                      <AiFillDelete
+                        onClick={() => RemoveCartItem(item.id)}
+                        className="fs-2 text-danger ms-auto"
+                      />
+                    </div>
+                  </div>
+                </div>
+              ))}
+
+              <div className="  total border ">
+                <h1 className="fs-4 fw-bold ">
+                  order Total: <span className="ms-4">${Total}</span>
+                </h1>
+                <Link
+                  to={"/login"}
+                  className="btn w-100 btn-outline-warning  my-2 fw-bold"
+                >
+                  LOGIN
+                </Link>
+              </div>
             </div>
-          </div>
-        </main>
-      )}
-    </DefaultLayout>
+          </main>
+        )}
+      </DefaultLayout>
+      <footer>
+        <Footer />
+      </footer>
+    </>
   );
 };
 export default Cart;

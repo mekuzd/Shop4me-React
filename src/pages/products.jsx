@@ -7,12 +7,14 @@ import DefaultLayout from "../Layouts/DefaultLayout";
 import { Context } from "../../Provider/Context";
 import http from "../config/http";
 import Footer from "../component/Footer";
+import Alert from "../component/Alert";
 
 const Products = () => {
   const [products, setproducts] = useState([]);
   const [loading, setloading] = useState(true);
   const [selCategory, setSelcategory] = useState([]);
-  const { addToCart } = useContext(Context);
+  const { alert, alertMessage, setalertMessage, setalert, Cart, setCart } =
+    useContext(Context);
   const [activeCategory, setactiveCatgory] = useState("All");
   const [category, setcategory] = useState([]);
 
@@ -25,6 +27,43 @@ const Products = () => {
       setSelcategory(products);
     } else {
       setSelcategory(Menucategory);
+    }
+  };
+  const closeAlert = () => {
+    setalert(false);
+  };
+
+  const addToCart = (item) => {
+    let itemExist = false;
+    if (Cart) {
+      Cart.map((existinItem) => {
+        if (existinItem.id == item.id) {
+          itemExist = true;
+        }
+      });
+    }
+    if (itemExist) {
+      let prevCartitem = Cart.map((previtem) => {
+        if (previtem.id == item.id) {
+          return {
+            ...previtem,
+            Quantity: (previtem.Quantity += 1),
+            Total: Math.round(previtem.price * previtem.Quantity * 100) / 100,
+          };
+        } else {
+          return previtem;
+        }
+      });
+      setCart(prevCartitem);
+      localStorage.setItem("cartItem", JSON.stringify(prevCartitem));
+      setalertMessage("ITEM ALREADY ADDED TO CART HENCE QUANTITY INCREASED");
+      setalert(true);
+    } else {
+      let newCart = [...Cart, { ...item, Quantity: 1, Total: item.price }];
+      setCart(newCart);
+      localStorage.setItem("cartItem", JSON.stringify(newCart));
+      setalertMessage("ITEM ADDED TO CART");
+      setalert(true);
     }
   };
 
@@ -90,6 +129,9 @@ const Products = () => {
       <DefaultLayout>
         {!loading && products.length > 0 && (
           <main>
+            {alert && (
+              <Alert closeAlert={closeAlert} alertMessage={alertMessage} />
+            )}{" "}
             <h2 className="text-center text-secondary fw-bold fs-3 m-2">
               Store Products
             </h2>
@@ -129,7 +171,6 @@ const Products = () => {
                         View Product
                       </Link>
                       <Link
-                        to={"/cart"}
                         className="btn btn-outline-warning mx-4"
                         onClick={() => addToCart(item)}
                       >

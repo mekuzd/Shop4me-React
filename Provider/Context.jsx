@@ -17,18 +17,12 @@ const ContextProvider = ({ children }) => {
 
   const [alert, setalert] = useState(false);
   const [alertMessage, setalertMessage] = useState("");
-  const addToCart = (item) => {
-    let newCart = [...Cart, { ...item, Quantity: 1, Total: item.price }];
-    setCart(newCart);
-    localStorage.setItem("cartItem", JSON.stringify(newCart));
-  };
 
   const initialState = {
     Store,
     setStore,
     Cart,
     setCart,
-    addToCart,
     alert,
     setalert,
     alertMessage,

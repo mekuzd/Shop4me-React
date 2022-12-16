@@ -9,14 +9,55 @@ import { Context } from "../../Provider/Context";
 import { Skeleton } from "antd";
 import http from "../config/http";
 import Footer from "../component/Footer";
+import Alert from "../component/Alert";
 
 const Productsview = () => {
-  const { addToCart } = useContext(Context);
+  const { alert, alertMessage, setalertMessage, setalert, Cart, setCart } =
+    useContext(Context);
   const { id } = useParams();
   const [item, setitem] = useState({});
   const [loading, setloading] = useState(true);
   const [readmore, setreadmore] = useState(false);
   let isMounted = true;
+
+  const addToCart = (item) => {
+    let itemExist = false;
+
+    if (Cart) {
+      Cart.map((existinItem) => {
+        if (existinItem.id == item.id) {
+          itemExist = true;
+        }
+      });
+    }
+    if (itemExist) {
+      let prevCartitem = Cart.map((previtem) => {
+        if (previtem.id == item.id) {
+          return {
+            ...previtem,
+            Quantity: (previtem.Quantity += 1),
+            Total: Math.round(previtem.price * previtem.Quantity * 100) / 100,
+          };
+        } else {
+          return previtem;
+        }
+      });
+      setCart(prevCartitem);
+      localStorage.setItem("cartItem", JSON.stringify(prevCartitem));
+      setalertMessage("ITEM ALREADY ADDED TO CART HENCE QUANTITY INCREASED");
+      setalert(true);
+    } else {
+      let newCart = [...Cart, { ...item, Quantity: 1, Total: item.price }];
+      setCart(newCart);
+      localStorage.setItem("cartItem", JSON.stringify(newCart));
+      setalertMessage("ITEM ADDED TO CART");
+      setalert(true);
+    }
+  };
+
+  const closeAlert = () => {
+    setalert(false);
+  };
 
   useEffect(() => {
     const fetchProduct = async () => {
@@ -58,12 +99,18 @@ const Productsview = () => {
             >
               BACK TO PRODUCTS
             </Link>
+            {alert && (
+              <Alert closeAlert={closeAlert} alertMessage={alertMessage} />
+            )}
             <main className="product-view row justify-content-center my-4 p-3">
               <div className="col-sm-4">
                 <img src={item?.image} alt={item?.title} />
               </div>
 
-              <div className={`card   p-3 shadow border-0  col-sm-4 `}>
+              <div
+                className={`card p-3 shadow-lg border col-sm-4 `}
+                style={{ backgroundColor: "transparent" }}
+              >
                 <h1 className="fw-bold">{item?.title}</h1>
                 <p className="my-4 fs-5x">
                   {readmore
@@ -84,7 +131,6 @@ const Productsview = () => {
                   </p>
                 </div>
                 <Link
-                  to={"/cart"}
                   className="btn btn-outline-warning w-25 ms-auto mt-auto"
                   onClick={() => addToCart(item)}
                 >

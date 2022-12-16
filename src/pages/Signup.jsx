@@ -15,15 +15,8 @@ const Signup = () => {
     password: "",
   });
 
-  const {
-    Theme,
-    alert,
-    setalert,
-    alertMessage,
-    setalertMessage,
-    Store,
-    setStore,
-  } = useContext(Context);
+  const { alert, setalert, alertMessage, setalertMessage, Store, setStore } =
+    useContext(Context);
 
   const firstname = useRef(null);
 
@@ -86,7 +79,7 @@ const Signup = () => {
   return (
     <>
       <DefaultLayout>
-        <main className={`bg-${Theme}`}>
+        <main>
           <div className=" text-center py-5 ">
             {alert && (
               <Alert closeAlert={closeAlert} alertMessage={alertMessage} />
@@ -98,7 +91,7 @@ const Signup = () => {
               <form
                 action=""
                 onSubmit={handleSubmit}
-                className={`form-control bg-${Theme} shadow p-3`}
+                className={`form-control  shadow p-3`}
               >
                 {/* First NAme  */}
                 <div>

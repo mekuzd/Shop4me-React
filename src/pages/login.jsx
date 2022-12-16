@@ -6,7 +6,7 @@ import Alert from "../component/Alert";
 import { Link } from "react-router-dom";
 
 const Login = () => {
-  const { Theme, alert, setalert, alertMessage, setalertMessage, Store } =
+  const { alert, setalert, alertMessage, setalertMessage, Store } =
     useContext(Context);
 
   const state = useRef({ email: "", password: "" });
@@ -50,7 +50,7 @@ const Login = () => {
   return (
     <>
       <DefaultLayout>
-        <main className={`bg-${Theme}  `}>
+        <main>
           <div className=" text-center  py-5 ">
             {alert && (
               <Alert closeAlert={closeAlert} alertMessage={alertMessage} />
@@ -62,7 +62,7 @@ const Login = () => {
               <form
                 action=""
                 onSubmit={handleLogin}
-                className={`form-control bg-${Theme} shadow p-3`}
+                className={`form-control  shadow p-3`}
               >
                 {/* Email  */}
                 <div>
