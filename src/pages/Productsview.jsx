@@ -11,7 +11,7 @@ import http from "../config/http";
 import Footer from "../component/Footer";
 
 const Productsview = () => {
-  const { Theme, addToCart } = useContext(Context);
+  const { addToCart } = useContext(Context);
   const { id } = useParams();
   const [item, setitem] = useState({});
   const [loading, setloading] = useState(true);
@@ -50,11 +50,11 @@ const Productsview = () => {
     <>
       <DefaultLayout>
         {!loading && (
-          <main className="container-fluid">
+          <main className="">
             <Link
               to={"/products"}
-              className=" btn btn-secondary   "
-              style={{ width: "200px", marginLeft: "210px" }}
+              className=" btn btn-secondary m-2  "
+              style={{ width: "200px" }}
             >
               BACK TO PRODUCTS
             </Link>
@@ -63,9 +63,7 @@ const Productsview = () => {
                 <img src={item?.image} alt={item?.title} />
               </div>
 
-              <div
-                className={`card bg-${Theme}  p-3 shadow border-0  col-sm-4 `}
-              >
+              <div className={`card   p-3 shadow border-0  col-sm-4 `}>
                 <h1 className="fw-bold">{item?.title}</h1>
                 <p className="my-4 fs-5x">
                   {readmore
@@ -94,7 +92,9 @@ const Productsview = () => {
                 </Link>
               </div>
             </main>
-            <Footer />
+            <footer>
+              <Footer />
+            </footer>
           </main>
         )}
       </DefaultLayout>

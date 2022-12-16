@@ -3,8 +3,6 @@ import React, { createContext, useState } from "react";
 export const Context = createContext(null);
 
 const ContextProvider = ({ children }) => {
-  const [Theme, setTheme] = useState("light");
-
   const [Cart, setCart] = useState(
     localStorage.getItem("cartItem")
       ? JSON.parse(localStorage.getItem("cartItem"))
@@ -28,8 +26,6 @@ const ContextProvider = ({ children }) => {
   const initialState = {
     Store,
     setStore,
-    Theme,
-    setTheme,
     Cart,
     setCart,
     addToCart,

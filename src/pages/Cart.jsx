@@ -7,15 +7,8 @@ import { AiFillDelete } from "react-icons/ai";
 import Alert from "../component/Alert";
 
 const Cart = () => {
-  const {
-    Theme,
-    Cart,
-    setCart,
-    alert,
-    setalert,
-    alertMessage,
-    setalertMessage,
-  } = useContext(Context);
+  const { Cart, setCart, alert, setalert, alertMessage, setalertMessage } =
+    useContext(Context);
 
   const [Total, setTotal] = useState(0);
 
@@ -105,7 +98,7 @@ const Cart = () => {
       {Cart.length > 0 && (
         <main>
           {/* main body */}
-          <div className={` bg-${Theme}    border-0 card-body    cartbody `}>
+          <div className={`    border-0 card-body    cartbody `}>
             <div className="text-center ">
               {alert && (
                 <Alert closeAlert={closeAlert} alertMessage={alertMessage} />
@@ -127,80 +120,56 @@ const Cart = () => {
                 </button>
               </div>
             </div>
-            {/* Table  */}
-            <table
-              className={`table  table-borderless  border table-${Theme}  mt-5`}
-            >
-              <thead className="text-warning ">
-                <tr>
-                  <th>item</th>
-                  <th>Price</th>
-                  <th>Quantity</th>
-                  <th>Subtotal</th>
-                </tr>
-              </thead>
-              <tbody>
-                {Cart.map((item) => (
-                  <tr key={item.id} className="cartItem" style={{}}>
-                    {/* item and title */}
-                    <td>
-                      <span className="">
-                        <span>
-                          <img src={item?.image} alt={item?.title} />
-                        </span>
-
-                        <p className="fw-bold ">{item?.title}</p>
-                      </span>
-                    </td>
-                    {/* item price  */}
-                    <td className="fs-5">
-                      <span>$</span>
-                      {item?.price}
-                    </td>
-
-                    {/* increase and decrease btn */}
-                    <td scope="col">
+            {Cart.map((item) => (
+              <div
+                key={item?.id}
+                className={`my-4  row  card-body  p-4  shadow border d-flex flex-wrap`}
+              >
+                <div className="  col-sm-5">
+                  <img
+                    src={item?.image}
+                    className="text-center"
+                    style={{ width: "100px" }}
+                    alt=""
+                  />
+                  <h1 className="fw-bold fs-4 pt-4"> {item.title}</h1>
+                </div>{" "}
+                <div className="col-sm-7 text-center  mt-2">
+                  <div>
+                    <span className="fw-bold fs-5">price :</span> <br />
+                    <span className="my-4 fs-4 fw-bold"> ${item?.price}</span>
+                    <br />
+                  </div>
+                  <div className="mt-3">
+                    <button
+                      className=" fs-4 "
+                      onClick={() =>
+                        decreaseCartQuantity(item?.id, item?.Quantity)
+                      }
+                    >
+                      -
+                    </button>
+                    <span className="mx-4 fw-bold ">{item.Quantity}</span>
+                    <button
+                      className=" fs-4"
+                      onClick={() => increaseCartQuantity(item?.id)}
+                    >
                       {" "}
-                      <span
-                        className="d-flex justify-content-between "
-                        style={{ width: "50px" }}
-                      >
-                        <button
-                          className="fw-bold fs-4 "
-                          onClick={() =>
-                            decreaseCartQuantity(item.id, item?.Quantity)
-                          }
-                        >
-                          -
-                        </button>
-                        <p className=" ms-2 fs-4 fw-bold">{item?.Quantity}</p>
-                        <button
-                          className="fs-4 fw-bold"
-                          onClick={() => increaseCartQuantity(item?.id)}
-                        >
-                          +
-                        </button>
-                      </span>
-                    </td>
-                    {/* total  */}
-                    <td className="fs-5" scope="col">
-                      <span>$</span>
-                      {item?.Total}
-                    </td>
-                    {/* button remove  */}
-                    <td scope="col">
-                      <AiFillDelete
-                        onClick={() => RemoveCartItem(item.id)}
-                        style={{
-                          fontSize: "25px",
-                          color: "red",
-                        }}
-                      />
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
+                      +{" "}
+                    </button>
+                  </div>
+                  <div className="mt-4 ">
+                    <h5 className="fs-4 fw-bold ">Total: ${item.Total} </h5>
+
+                    <AiFillDelete
+                      onClick={() => RemoveCartItem(item.id)}
+                      className="fs-2 text-danger ms-auto"
+                    />
+                  </div>
+                </div>
+              </div>
+            ))}
+
             <div className="  total border ">
               <h1 className="fs-4 fw-bold ">
                 order Total: <span className="ms-4">${Total}</span>

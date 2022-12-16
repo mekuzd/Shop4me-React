@@ -12,7 +12,7 @@ const Products = () => {
   const [products, setproducts] = useState([]);
   const [loading, setloading] = useState(true);
   const [selCategory, setSelcategory] = useState([]);
-  const { Theme, addToCart } = useContext(Context);
+  const { addToCart } = useContext(Context);
   const [activeCategory, setactiveCatgory] = useState("All");
   const [category, setcategory] = useState([]);
 
@@ -99,7 +99,7 @@ const Products = () => {
               {newCategory.map((category, index) => (
                 <button
                   key={index}
-                  className={`  m-3  ${
+                  className={`  mx-1  ${
                     category == activeCategory && "active-btn"
                   }`}
                   onClick={() => categoryBtn(category)}
@@ -111,14 +111,11 @@ const Products = () => {
             {/* display products */}
             <div className="products">
               {selCategory.map((item) => (
-                <div
-                  key={item.id}
-                  className={`card card-body product  bg-${Theme} `}
-                >
+                <div key={item.id} className={`card card-body product  `}>
                   <div className="text-center">
                     <img src={item?.image} alt="" className={"productImg"} />
                   </div>
-                  <h4 className={`fw-bold bg-${Theme} mt-5`}>{item?.title}</h4>
+                  <h4 className={`fw-bold  mt-5`}>{item?.title}</h4>
                   <div className="mt-auto">
                     <div>
                       <span>rating:</span>

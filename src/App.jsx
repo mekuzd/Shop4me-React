@@ -12,7 +12,7 @@ function App() {
     <>
       <DefaultLayout>
         {/* top  */}
-        <main className="container-fluid">
+        <main>
           <main
             className="row justify-content-center p-2 "
             style={{ marginTop: "120px" }}
@@ -29,7 +29,7 @@ function App() {
               </p>
               <Link
                 to={"/products"}
-                className="btn btn-warning p-2 my-5 w-25 fs-5 fw-bold rounded"
+                className="btn btn-warning  my-5 shopnow  "
               >
                 Shop Now
               </Link>
@@ -39,7 +39,7 @@ function App() {
             </div>
           </main>
           {/* middle */}
-          <section className={`section bg-${Theme} `}>
+          <section className={`section  `}>
             <main className="row justify-content-center middle-section align-items-center">
               <div className="col-sm-4 m-3">
                 <h1 className="fs-2 fw-bold p-2  ">
@@ -88,7 +88,6 @@ function App() {
                 </p>
               </div>
             </main>
-
             <footer>
               <Footer />
             </footer>

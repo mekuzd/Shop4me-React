@@ -7,21 +7,20 @@ import { FaBars } from "react-icons/fa";
 import Offcanvas from "react-bootstrap/Offcanvas";
 
 const Navbar = () => {
-  const { Theme, setTheme, Cart } = useContext(Context);
+  const { Cart } = useContext(Context);
   const [show, setShow] = useState(false);
-  const [drop, setdrop] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+  const [theme, settheme] = useState(false);
+
   function changeTheme() {
-    setTheme((prev) => (prev == "light" ? "dark" : "light"));
-    Theme == "light"
-      ? (document.body.className = "bg-dark text-white")
-      : (document.body.className = "bg-light text-dark");
+    settheme(!theme);
+    document.body.classList.toggle("dark-mode");
   }
 
   return (
     <nav
-      className={`d-flex  d-sm-flex shadow justify-content-around align-items-center   bg-${Theme} p-3  fixed-top`}
+      className={`d-flex  d-sm-flex shadow justify-content-around align-items-center     p-3  fixed-top`}
     >
       <Link to={"/"} className="text-warning fs-1 ">
         Shop4me
@@ -56,7 +55,7 @@ const Navbar = () => {
               <Link to={"/cart"} className="text-warning ">
                 <button className="btn btn-secondary">
                   Cart
-                  <span className="badge bg-light text-warning">
+                  <span className="badge bg-light ms-2 text-warning">
                     {Cart.length}
                   </span>
                 </button>
@@ -90,8 +89,8 @@ const Navbar = () => {
           </Link>
         </div>
         <div>
-          <button className={`bg-${Theme} border-0 ms-4 text-warning`}>
-            {Theme == "light" ? "Dark" : "light"}
+          <button className={` border-0 ms-4 text-warning`}>
+            {theme ? "light" : "dark"}
           </button>
           <Switch
             size="md"
