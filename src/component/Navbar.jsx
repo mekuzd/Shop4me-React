@@ -85,7 +85,9 @@ const Navbar = () => {
         <div>
           <Link to={"/cart"} className="text-warning   position-relative ">
             <ShoppingCartOutlined style={{ fontSize: "40px" }} />
-            <span className="position-absolute ">{Cart.length}</span>
+            {Cart.length > 0 && (
+              <span className="position-absolute ">{Cart.length}</span>
+            )}
           </Link>
         </div>
         <div>
