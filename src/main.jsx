@@ -8,6 +8,7 @@ import { ChakraProvider } from "@chakra-ui/react";
 import Error404 from "./pages/error404";
 import Cart from "./pages/Cart";
 import { Suspense } from "react";
+import Navbar from "./component/Navbar";
 
 const App = React.lazy(() => import("./App"));
 const Login = React.lazy(() => import("./pages/login"));
@@ -47,7 +48,13 @@ ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <ChakraProvider>
       <ContextProvider>
-        <Suspense>
+        <Suspense
+          fallback={
+            <div className="loading ">
+              <div className="text-warning spinner-border"></div>
+            </div>
+          }
+        >
           <RouterProvider router={router} />
         </Suspense>
       </ContextProvider>

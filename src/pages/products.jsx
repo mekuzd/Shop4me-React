@@ -114,10 +114,7 @@ const Products = () => {
   if (loading) {
     return (
       <DefaultLayout>
-        <div
-          className=" d-flex justify-content-center"
-          style={{ marginTop: "70px" }}
-        >
+        <div className="loading">
           <div className="text-warning spinner-border"></div>
         </div>
       </DefaultLayout>
