@@ -133,12 +133,12 @@ const Products = () => {
               Store Products
             </h2>
             <div className="underline "></div>
-            {/* category buttons   */}
+            {/* displaycategory buttons   */}
             <div className=" Categorybtn my-4">
               {newCategory.map((category, index) => (
                 <button
                   key={index}
-                  className={`  mx-1  ${
+                  className={`  m-2 ${
                     category == activeCategory && "active-btn"
                   }`}
                   onClick={() => categoryBtn(category)}

@@ -143,7 +143,7 @@ const Signup = () => {
                 </div>
                 <button
                   type="submit"
-                  className="btn btn-outline-warning fs-5 w-25 my-4"
+                  className="btn btn-outline-warning  registerbtn"
                 >
                   Register
                 </button>

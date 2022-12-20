@@ -4,12 +4,17 @@ import { useContext, useRef } from "react";
 import { Context } from "../../Provider/Context";
 import Alert from "../component/Alert";
 import { Link } from "react-router-dom";
+import { useEffect } from "react";
 
 const Login = () => {
   const { alert, setalert, alertMessage, setalertMessage, Store } =
     useContext(Context);
-
+  const email = useRef(null);
   const state = useRef({ email: "", password: "" });
+
+  useEffect(() => {
+    email.current.focus();
+  });
 
   const handleLogin = (e) => {
     e.preventDefault();
@@ -68,6 +73,7 @@ const Login = () => {
                 <div>
                   <label htmlFor="email">Email</label>
                   <input
+                    ref={email}
                     required
                     onChange={(e) => (state.current.email = e.target.value)}
                     type="text"
