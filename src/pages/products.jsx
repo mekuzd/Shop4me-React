@@ -8,6 +8,7 @@ import { Context } from "../../Provider/Context";
 import http from "../config/http";
 import Footer from "../component/Footer";
 import Alert from "../component/Alert";
+import { TrophyOutlined } from "@ant-design/icons";
 
 const Products = () => {
   const [products, setproducts] = useState([]);
@@ -15,11 +16,13 @@ const Products = () => {
   const [selCategory, setSelcategory] = useState([]);
   const { alert, alertMessage, setalertMessage, setalert, Cart, setCart } =
     useContext(Context);
-  const [activeCategory, setactiveCatgory] = useState("All");
+  const [activeCategory, setactiveCategory] = useState("All");
   const [category, setcategory] = useState([]);
+  const [searchCategory, setsearchCategory] = useState("");
+  const [sameCat, setsameCat] = useState(false);
 
   const categoryBtn = (category) => {
-    setactiveCatgory(category);
+    setactiveCategory(category);
     const Menucategory = products.filter(
       (product) => product.category === category,
     );
@@ -29,6 +32,28 @@ const Products = () => {
       setSelcategory(Menucategory);
     }
   };
+
+  // handle search input
+  console.log(sameCat);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    if (searchCategory) {
+      const Menucategory = products.filter(
+        (product) => product.category === searchCategory,
+      );
+      if (searchCategory == "All") {
+        setSelcategory(products);
+      } else {
+        setSelcategory(Menucategory);
+      }
+    } else {
+      setalertMessage("INPUT CATEGORY");
+      setalert(true);
+    }
+  };
+
   const closeAlert = () => {
     setalert(false);
   };
@@ -133,6 +158,24 @@ const Products = () => {
               Store Products
             </h2>
             <div className="underline "></div>
+            {/* input searvh categories  */}
+            <form
+              action=""
+              className="border-0 my-3 form-control"
+              onSubmit={handleSubmit}
+            >
+              <div className="d-flex m-auto px-4 " style={{ width: "400px" }}>
+                <input
+                  type="text"
+                  placeholder="Search Categories"
+                  className="form-control"
+                  onChange={(e) => setsearchCategory(e.target.value)}
+                />{" "}
+                <button type="submit" className="btn btn-outline-warning mx-2 ">
+                  Search
+                </button>
+              </div>
+            </form>
             {/* displaycategory buttons   */}
             <div className=" Categorybtn my-4">
               {newCategory.map((category, index) => (
@@ -178,6 +221,7 @@ const Products = () => {
                 </div>
               ))}
             </div>
+            )
             <footer>
               <Footer />
             </footer>{" "}

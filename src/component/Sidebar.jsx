@@ -1,5 +1,4 @@
 import Offcanvas from "react-bootstrap/Offcanvas";
-// import { useState } from "react";
 import { Link } from "react-router-dom";
 const Sidebar = ({ show, handleClose }) => {
   return (
