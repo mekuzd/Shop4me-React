@@ -133,10 +133,10 @@ const Products = () => {
               className="border-0 my-3 form-control"
               onSubmit={handleSubmit}
             >
-              <div className="d-flex m-auto px-2  " style={{ width: "350px" }}>
+              <div className="d-flex m-auto px-2 searchInp  ">
                 <input
                   type="text"
-                  placeholder="Search Categories"
+                  placeholder="Search Categories e.g All"
                   className="form-control"
                   onChange={(e) => setsearchCategory(e.target.value)}
                 />{" "}
@@ -150,7 +150,7 @@ const Products = () => {
               {newCategory.map((category, index) => (
                 <button
                   key={index}
-                  className={`  m-2 ${
+                  className={` m-2 ${
                     category == activeCategory && "active-btn"
                   }`}
                   onClick={() => categoryBtn(category)}
