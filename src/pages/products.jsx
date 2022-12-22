@@ -1,27 +1,25 @@
 import { useContext, useState } from "react";
 import { useEffect } from "react";
-
-import { Rate } from "antd";
-import { Link } from "react-router-dom";
 import DefaultLayout from "../Layouts/DefaultLayout";
 import { Context } from "../../Provider/Context";
 import http from "../config/http";
 import Footer from "../component/Footer";
 import Alert from "../component/Alert";
-import { TrophyOutlined } from "@ant-design/icons";
+import SingleProduct from "../component/SingleProduct";
 
 const Products = () => {
   const [products, setproducts] = useState([]);
   const [loading, setloading] = useState(true);
   const [selCategory, setSelcategory] = useState([]);
-  const { alert, alertMessage, setalertMessage, setalert, Cart, setCart } =
-    useContext(Context);
+  const { alert, alertMessage, setalert } = useContext(Context);
   const [activeCategory, setactiveCategory] = useState("All");
   const [category, setcategory] = useState([]);
   const [searchCategory, setsearchCategory] = useState("");
-  const [sameCat, setsameCat] = useState(false);
+  const [notequalCat, setnotEqualCat] = useState(false);
 
+  // handle category btn
   const categoryBtn = (category) => {
+    setnotEqualCat(false);
     setactiveCategory(category);
     const Menucategory = products.filter(
       (product) => product.category === category,
@@ -34,12 +32,18 @@ const Products = () => {
   };
 
   // handle search input
-  console.log(sameCat);
-
+  let equalCategory = false;
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (searchCategory) {
+    newCategory.find((category) => {
+      if (category == searchCategory) {
+        equalCategory = true;
+        setnotEqualCat(false);
+      }
+    });
+
+    if (equalCategory) {
       const Menucategory = products.filter(
         (product) => product.category === searchCategory,
       );
@@ -49,47 +53,12 @@ const Products = () => {
         setSelcategory(Menucategory);
       }
     } else {
-      setalertMessage("INPUT CATEGORY");
-      setalert(true);
+      setnotEqualCat(true);
     }
   };
 
   const closeAlert = () => {
     setalert(false);
-  };
-
-  const addToCart = (item) => {
-    let itemExist = false;
-    if (Cart) {
-      Cart.map((existinItem) => {
-        if (existinItem.id == item.id) {
-          itemExist = true;
-        }
-      });
-    }
-    if (itemExist) {
-      let prevCartitem = Cart.map((previtem) => {
-        if (previtem.id == item.id) {
-          return {
-            ...previtem,
-            Quantity: (previtem.Quantity += 1),
-            Total: Math.round(previtem.price * previtem.Quantity * 100) / 100,
-          };
-        } else {
-          return previtem;
-        }
-      });
-      setCart(prevCartitem);
-      localStorage.setItem("cartItem", JSON.stringify(prevCartitem));
-      setalertMessage("ITEM ALREADY ADDED TO CART HENCE QUANTITY INCREASED");
-      setalert(true);
-    } else {
-      let newCart = [...Cart, { ...item, Quantity: 1, Total: item.price }];
-      setCart(newCart);
-      localStorage.setItem("cartItem", JSON.stringify(newCart));
-      setalertMessage("ITEM ADDED TO CART");
-      setalert(true);
-    }
   };
 
   let isMounted = true;
@@ -164,7 +133,7 @@ const Products = () => {
               className="border-0 my-3 form-control"
               onSubmit={handleSubmit}
             >
-              <div className="d-flex m-auto px-4 " style={{ width: "400px" }}>
+              <div className="d-flex m-auto px-5 " style={{ width: "400px" }}>
                 <input
                   type="text"
                   placeholder="Search Categories"
@@ -191,37 +160,13 @@ const Products = () => {
               ))}
             </div>
             {/* display products */}
-            <div className="products">
-              {selCategory.map((item) => (
-                <div key={item.id} className={`card card-body product  `}>
-                  <div className="text-center">
-                    <img src={item?.image} alt="" className={"productImg"} />
-                  </div>
-                  <h4 className={`fw-bold  mt-5`}>{item?.title}</h4>
-                  <div className="mt-auto">
-                    <div>
-                      <span>rating:</span>
-                      <Rate disabled value={item?.rating?.rate} />
-                    </div>
-                    <div className="d-flex my-4 justify-content-start">
-                      <Link
-                        to={`/products/ ${item.id}`}
-                        className="btn btn-outline-warning"
-                      >
-                        View Product
-                      </Link>
-                      <Link
-                        className="btn btn-outline-warning mx-4"
-                        onClick={() => addToCart(item)}
-                      >
-                        Add to cart
-                      </Link>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-            )
+            {notequalCat ? (
+              <h1 className="fs-3 text-secondary text-center">
+                category not found
+              </h1>
+            ) : (
+              <SingleProduct selCategory={selCategory} />
+            )}
             <footer>
               <Footer />
             </footer>{" "}
