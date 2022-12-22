@@ -39,19 +39,11 @@ const Products = () => {
     newCategory.find((category) => {
       if (category == searchCategory) {
         equalCategory = true;
-        setnotEqualCat(false);
       }
     });
 
     if (equalCategory) {
-      const Menucategory = products.filter(
-        (product) => product.category === searchCategory,
-      );
-      if (searchCategory == "All") {
-        setSelcategory(products);
-      } else {
-        setSelcategory(Menucategory);
-      }
+      categoryBtn(searchCategory);
     } else {
       setnotEqualCat(true);
     }
