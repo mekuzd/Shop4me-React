@@ -133,7 +133,7 @@ const Products = () => {
               className="border-0 my-3 form-control"
               onSubmit={handleSubmit}
             >
-              <div className="d-flex m-auto px-5 " style={{ width: "400px" }}>
+              <div className="d-flex m-auto px-2  " style={{ width: "350px" }}>
                 <input
                   type="text"
                   placeholder="Search Categories"

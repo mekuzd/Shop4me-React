@@ -214,6 +214,9 @@ input {
   font-size: 18px;
   padding: 10px;
 }
+.searchInp {
+  width: 350px;
+}
 .alert p {
   font-size: 20px;
   color: goldenrod;
