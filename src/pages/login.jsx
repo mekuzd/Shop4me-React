@@ -1,17 +1,17 @@
 import DefaultLayout from "../Layouts/DefaultLayout";
 import Footer from "../component/Footer";
-import { useContext, useRef } from "react";
+import { useContext, useRef, useState } from "react";
 import { Context } from "../../Provider/Context";
 import Alert from "../component/Alert";
 import { Link } from "react-router-dom";
 import { useEffect } from "react";
 
 const Login = () => {
-  const { alert, setalert, alertMessage, setalertMessage, Store } =
-    useContext(Context);
+  const { Store } = useContext(Context);
   const email = useRef(null);
   const state = useRef({ email: "", password: "" });
-
+  const [alert, setalert] = useState(false);
+  const [alertMessage, setalertMessage] = useState("");
   useEffect(() => {
     email.current.focus();
   });

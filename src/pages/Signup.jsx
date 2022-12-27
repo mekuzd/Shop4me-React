@@ -15,9 +15,9 @@ const Signup = () => {
     password: "",
   });
 
-  const { alert, setalert, alertMessage, setalertMessage, Store, setStore } =
-    useContext(Context);
-
+  const { Store, setStore } = useContext(Context);
+  const [alert, setalert] = useState(false);
+  const [alertMessage, setalertMessage] = useState("");
   const firstname = useRef(null);
 
   const handleSubmit = (e) => {

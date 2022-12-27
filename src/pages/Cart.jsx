@@ -8,8 +8,9 @@ import Alert from "../component/Alert";
 import Footer from "../component/Footer";
 
 const Cart = () => {
-  const { Cart, setCart, alert, setalert, alertMessage, setalertMessage } =
-    useContext(Context);
+  const { Cart, setCart } = useContext(Context);
+  const [alert, setalert] = useState(false);
+  const [alertMessage, setalertMessage] = useState("");
 
   const [Total, setTotal] = useState(0);
 
