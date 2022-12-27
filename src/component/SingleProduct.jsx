@@ -4,41 +4,7 @@ import { Context } from "../../Provider/Context";
 import { useContext } from "react";
 
 const SingleProduct = ({ selCategory }) => {
-  const { setalertMessage, setalert, Cart, setCart } = useContext(Context);
-
-  const addToCart = (item) => {
-    let itemExist = false;
-    if (Cart) {
-      Cart.map((existinItem) => {
-        if (existinItem.id == item.id) {
-          itemExist = true;
-        }
-      });
-    }
-    if (itemExist) {
-      let prevCartitem = Cart.map((previtem) => {
-        if (previtem.id == item.id) {
-          return {
-            ...previtem,
-            Quantity: (previtem.Quantity += 1),
-            Total: Math.round(previtem.price * previtem.Quantity * 100) / 100,
-          };
-        } else {
-          return previtem;
-        }
-      });
-      setCart(prevCartitem);
-      localStorage.setItem("cartItem", JSON.stringify(prevCartitem));
-      setalertMessage("ITEM ALREADY ADDED TO CART HENCE QUANTITY INCREASED");
-      setalert(true);
-    } else {
-      let newCart = [...Cart, { ...item, Quantity: 1, Total: item.price }];
-      setCart(newCart);
-      localStorage.setItem("cartItem", JSON.stringify(newCart));
-      setalertMessage("ITEM ADDED TO CART");
-      setalert(true);
-    }
-  };
+  const { addToCart } = useContext(Context);
 
   return (
     <div className="products">

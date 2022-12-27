@@ -119,7 +119,7 @@ const Products = () => {
               Store Products
             </h2>
             <div className="underline "></div>
-            {/* input searvh categories  */}
+            {/* input search categories  */}
             <form
               action=""
               className="border-0 my-3 form-control"
