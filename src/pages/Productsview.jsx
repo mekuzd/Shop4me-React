@@ -67,12 +67,12 @@ const Productsview = () => {
               <Alert closeAlert={closeAlert} alertMessage={alertMessage} />
             )}
             <main className="product-view row justify-content-center my-4 p-3">
-              <div className="col-sm-4">
+              <div className="col-sm-4 animate__animated animate__backInLeft">
                 <img src={item?.image} alt={item?.title} />
               </div>
 
               <div
-                className={`card p-3 shadow-lg border col-sm-4 `}
+                className={`card p-3 shadow-lg border col-sm-4 animate__animated animate__backInRight`}
                 style={{ backgroundColor: "transparent" }}
               >
                 <h1 className="fw-bold">{item?.title}</h1>

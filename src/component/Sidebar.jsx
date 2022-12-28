@@ -5,7 +5,7 @@ const Sidebar = ({ show, handleClose }) => {
     <Offcanvas
       show={show}
       onHide={handleClose}
-      className="animate__animated animate__slideInDown animate__repeat-2"
+      className="animate__animated animate__slideInDown "
     >
       <Offcanvas.Header closeButton>
         {" "}
