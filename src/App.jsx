@@ -17,7 +17,7 @@ function App() {
             className="row justify-content-center p-2 "
             style={{ marginTop: "120px" }}
           >
-            <div className="col-sm-5">
+            <div className="col-sm-5 animate__animated animate__backInLeft ">
               <h1 className="fs-1 fw-bold text-secondary">
                 Shop for Your Item
               </h1>
@@ -34,7 +34,7 @@ function App() {
                 Shop Now
               </Link>
             </div>
-            <div className="col-sm-5 m-3">
+            <div className="col-sm-5 m-3 animate__animated animate__backInRight">
               <img src="../Homepage.jpg" alt="" className="Homepage-img" />
             </div>
           </main>

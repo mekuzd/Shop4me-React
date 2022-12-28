@@ -2,7 +2,11 @@ import Offcanvas from "react-bootstrap/Offcanvas";
 import { Link } from "react-router-dom";
 const Sidebar = ({ show, handleClose }) => {
   return (
-    <Offcanvas show={show} onHide={handleClose}>
+    <Offcanvas
+      show={show}
+      onHide={handleClose}
+      className="animate__animated animate__slideInDown animate__repeat-2"
+    >
       <Offcanvas.Header closeButton>
         {" "}
         <Link to={"/"} className="fs-3 fw-bold text-warning">

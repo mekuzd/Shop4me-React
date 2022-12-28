@@ -142,7 +142,7 @@ const Products = () => {
               {newCategory.map((category, index) => (
                 <button
                   key={index}
-                  className={` m-2 ${
+                  className={`animate__animated animate__backInRight m-2 ${
                     category == activeCategory && "active-btn"
                   }`}
                   onClick={() => categoryBtn(category)}

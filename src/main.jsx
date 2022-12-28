@@ -5,16 +5,15 @@ import "antd/dist/reset.css";
 import "./index.css";
 import ContextProvider from "../Provider/Context";
 import { ChakraProvider } from "@chakra-ui/react";
-import Error404 from "./pages/error404";
 import Cart from "./pages/Cart";
 import { Suspense } from "react";
-import Navbar from "./component/Navbar";
 
 const App = React.lazy(() => import("./App"));
 const Login = React.lazy(() => import("./pages/login"));
 const Signup = React.lazy(() => import("./pages/Signup"));
 const Products = React.lazy(() => import("./pages/products"));
 const Productsview = React.lazy(() => import("./pages/Productsview"));
+const Error404 = React.lazy(() => import("./pages/error404"));
 
 const router = createBrowserRouter([
   {

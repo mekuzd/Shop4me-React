@@ -9,7 +9,10 @@ const SingleProduct = ({ selCategory }) => {
   return (
     <div className="products">
       {selCategory.map((item) => (
-        <div key={item.id} className={`card card-body product  `}>
+        <div
+          key={item.id}
+          className={`card card-body product animate__animated animate__backInLeft `}
+        >
           <div className="text-center">
             <img src={item?.image} alt="" className={"productImg"} />
           </div>
