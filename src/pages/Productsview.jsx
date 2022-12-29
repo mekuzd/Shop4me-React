@@ -76,11 +76,14 @@ const Productsview = () => {
                 style={{ backgroundColor: "transparent" }}
               >
                 <h1 className="fw-bold">{item?.title}</h1>
-                <p className="my-4 fs-5x">
+                <p className="my-4 fs-5 readmore">
                   {readmore
                     ? item?.description
                     : `${item.description.substring(0, 60)}...`}
-                  <button onClick={() => setreadmore(!readmore)}>
+                  <button
+                    className="fs-6 "
+                    onClick={() => setreadmore(!readmore)}
+                  >
                     {readmore ? "Read less" : "Read more"}
                   </button>
                 </p>
