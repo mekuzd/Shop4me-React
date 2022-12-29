@@ -72,7 +72,7 @@ const Productsview = () => {
               </div>
 
               <div
-                className={`card p-3 shadow-lg border col-sm-4 animate__animated animate__backInRight`}
+                className={`card my-3 p-3 shadow-lg border col-sm-4 animate__animated animate__backInRight`}
                 style={{ backgroundColor: "transparent" }}
               >
                 <h1 className="fw-bold">{item?.title}</h1>
