@@ -76,7 +76,7 @@ const Productsview = () => {
                 style={{ backgroundColor: "transparent" }}
               >
                 <h1 className="fw-bold">{item?.title}</h1>
-                <p className="my-4 fs-5 readmore">
+                <p className="my-4 ">
                   {readmore
                     ? item?.description
                     : `${item.description.substring(0, 60)}...`}
