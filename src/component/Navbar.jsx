@@ -4,7 +4,6 @@ import { useContext, useState } from "react";
 import { Context } from "../../Provider/Context";
 import { Switch } from "@chakra-ui/react";
 import { FaBars } from "react-icons/fa";
-// import Offcanvas from "react-bootstrap/Offcanvas";
 import Sidebar from "./Sidebar";
 
 const Navbar = () => {
