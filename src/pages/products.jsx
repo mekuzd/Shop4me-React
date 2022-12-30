@@ -35,17 +35,18 @@ const Products = () => {
   let equalCategory = false;
   const handleSubmit = (e) => {
     e.preventDefault();
+    if (searchCategory) {
+      category.find((category) => {
+        if (category == searchCategory) {
+          equalCategory = true;
+        }
+      });
 
-    newCategory.find((category) => {
-      if (category == searchCategory) {
-        equalCategory = true;
+      if (equalCategory) {
+        categoryBtn(searchCategory);
+      } else {
+        setnotEqualCat(true);
       }
-    });
-
-    if (equalCategory) {
-      categoryBtn(searchCategory);
-    } else {
-      setnotEqualCat(true);
     }
   };
 
@@ -80,7 +81,8 @@ const Products = () => {
     const fetchCategory = async () => {
       try {
         const response = await http.get("/products/categories");
-        setcategory(response.data);
+        let NewCategory = ["All", ...response.data];
+        setcategory(NewCategory);
       } catch (error) {
         console.log("error");
         setcategory([]);
@@ -93,9 +95,6 @@ const Products = () => {
       isMounted = false;
     };
   }, []);
-
-  // added All to categories
-  let newCategory = ["All", ...category];
 
   if (loading) {
     return (
@@ -139,7 +138,7 @@ const Products = () => {
             </form>
             {/* displaycategory buttons   */}
             <div className=" Categorybtn my-4">
-              {newCategory.map((category, index) => (
+              {category.map((category, index) => (
                 <button
                   key={index}
                   className={`animate__animated animate__backInRight m-2 ${

@@ -58,7 +58,7 @@ const Productsview = () => {
           <main className="">
             <Link
               to={"/products"}
-              className=" btn btn-secondary m-2  "
+              className=" btn btn-outline-warning m-2  "
               style={{ width: "200px" }}
             >
               BACK TO PRODUCTS
@@ -72,7 +72,7 @@ const Productsview = () => {
               </div>
 
               <div
-                className={`card my-3 p-3 shadow-lg border col-sm-4 animate__animated animate__backInRight`}
+                className={`card my-3 p-3  border-warning rounded shadow col-sm-4 animate__animated animate__backInRight`}
                 style={{ backgroundColor: "transparent" }}
               >
                 <h1 className="fw-bold">{item?.title}</h1>
