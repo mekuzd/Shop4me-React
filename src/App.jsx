@@ -18,9 +18,7 @@ function App() {
             style={{ marginTop: "120px" }}
           >
             <div className="col-sm-5 animate__animated animate__backInLeft ">
-              <h1 className="fs-1 fw-bold text-secondary">
-                Shop for Your Item
-              </h1>
+              <h1 className="fs-1 fw-bold text-warning">Shop for Your Item</h1>
               <p className="my-5 fs-4 fw-1">
                 Lorem ipsum, dolor sit amet consectetur adipisicing elit. Iusto,
                 at sed omnis corporis doloremque possimus velit! Repudiandae

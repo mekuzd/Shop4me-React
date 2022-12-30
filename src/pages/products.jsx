@@ -129,7 +129,7 @@ const Products = () => {
                 <input
                   type="text"
                   placeholder="Search Categories e.g All"
-                  className="form-control"
+                  className="form-control bg-light"
                   onChange={(e) => setsearchCategory(e.target.value)}
                 />{" "}
                 <button type="submit" className="btn btn-outline-warning mx-2 ">

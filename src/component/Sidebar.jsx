@@ -19,9 +19,9 @@ const Sidebar = ({ show, handleClose }) => {
           : "animate__animated animate__slideOutUp"
       } `}
     >
-      <Offcanvas.Header closeButton className="offcanvas-header">
+      <Offcanvas.Header closeButton className="bg-warning">
         {" "}
-        <Link to={"/"} className="fs-3 fw-bold text-warning">
+        <Link to={"/"} className="fs-3 fw-bold text-dark">
           Shop4me
         </Link>{" "}
       </Offcanvas.Header>

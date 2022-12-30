@@ -21,15 +21,15 @@ const Navbar = () => {
 
   return (
     <nav
-      className={`d-flex  d-sm-flex shadow justify-content-around align-items-center     p-3  fixed-top`}
+      className={`d-flex bg-warning  d-sm-flex shadow justify-content-around align-items-center     p-3  fixed-top`}
     >
       {/* mobile navbar  */}
-      <Link to={"/"} className="text-warning fs-1 ">
+      <Link to={"/"} className="text-dark fs-1 ">
         Shop4me
       </Link>
 
       <div className="d-block d-md-none ms-auto">
-        <Link to={"/cart"} className="text-warning   position-relative ">
+        <Link to={"/cart"} className="text-dark   position-relative ">
           <ShoppingCartOutlined style={{ fontSize: "40px" }} />
           {Cart.length > 0 && (
             <span className="position-absolute ">{Cart.length}</span>
@@ -37,7 +37,7 @@ const Navbar = () => {
         </Link>
       </div>
       <div className="d-block d-md-none ms-auto bar">
-        <FaBars className="text-warning fs-2 " onClick={handleShow} />
+        <FaBars className="text-dark fs-2 " onClick={handleShow} />
       </div>
 
       {/* toggle side bar  */}
@@ -45,14 +45,14 @@ const Navbar = () => {
 
       {/* nav links on desktop */}
       <div className="d-none d-md-flex justify-content-between align-items-center nav-page">
-        <Link to={"/products"} className="text-warning ms-2 fs-5">
+        <Link to={"/products"} className="text-dark ms-2 fs-5">
           Products
         </Link>
-        <Link to={"/signup"} className="text-warning fs-5">
+        <Link to={"/signup"} className="text-dark fs-5">
           SignUp
         </Link>
 
-        <Link to={"/login"} className="ms-2 text-warning fs-5">
+        <Link to={"/login"} className="ms-2 text-dark fs-5">
           Login
         </Link>
       </div>
@@ -62,7 +62,7 @@ const Navbar = () => {
         style={{ width: "200px" }}
       >
         <div>
-          <Link to={"/cart"} className="text-warning   position-relative ">
+          <Link to={"/cart"} className="text-dark   position-relative ">
             <ShoppingCartOutlined style={{ fontSize: "40px" }} />
             {Cart.length > 0 && (
               <span className="position-absolute ">{Cart.length}</span>
@@ -70,7 +70,7 @@ const Navbar = () => {
           </Link>
         </div>
         <div>
-          <button className={` border-0 ms-4 text-warning`}>
+          <button className={` border-0 ms-4 text-dark`}>
             {theme ? "light" : "dark"}
           </button>
           <Switch
