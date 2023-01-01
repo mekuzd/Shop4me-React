@@ -18,13 +18,18 @@ const SingleProduct = ({ selCategory }) => {
           </div>
           <h4 className={`fw-bold  mt-5`}>{item?.title}</h4>
           <div className="mt-auto">
+            <div className="my-2">
+              <span className="fs-5 fw-bold ">Rating:</span>
+              <Rate disabled value={item?.rating?.rate} className="mx-1" />
+            </div>
             <div>
-              <span>rating:</span>
-              <Rate disabled value={item?.rating?.rate} />
+              <p className="fs-5 fw-bold">
+                Price: $<span>{item?.price}</span>
+              </p>
             </div>
             <div className="d-flex my-4 justify-content-start">
               <Link
-                to={`/products/ ${item.id}`}
+                to={`/products/ ${item?.id}`}
                 className="btn btn-outline-warning"
               >
                 View Product

@@ -87,13 +87,18 @@ const Productsview = () => {
                     {readmore ? "Read less" : "Read more"}
                   </button>
                 </p>
-                <div className="">
-                  <div className="fs-5">
+                <div>
+                  <p className="fs-6 fw-bold">
+                    Price: $<span>{item?.price}</span>
+                  </p>
+                </div>
+                <div>
+                  <div className="fs-6 fw-bold">
                     Rating:
                     <Rate disabled value={item?.rating?.rate} />
                   </div>
                   <p>
-                    <span className="fw-bold">Category :</span>
+                    <span className="fw-bold">Category : </span>
                     {String(item?.category).toLocaleUpperCase()}
                   </p>
                 </div>
