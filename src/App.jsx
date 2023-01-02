@@ -1,12 +1,15 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { useContext, useEffect } from "react";
-import { Context } from "../Provider/Context";
 import DefaultLayout from "./Layouts/DefaultLayout";
 import Footer from "./component/Footer";
+import AOS from "aos";
+import "aos/dist/aos.css";
+import { useEffect } from "react";
 
 function App() {
-  const { Theme } = useContext(Context);
+  useEffect(() => {
+    AOS.init();
+  }, []);
 
   return (
     <>
@@ -39,12 +42,12 @@ function App() {
           {/* middle */}
           <section className={`section  `}>
             <main className="row justify-content-center middle-section align-items-center">
-              <div className="col-sm-4 m-3">
+              <div className="col-sm-4 m-3" data-aos="zoom-out-down">
                 <h1 className="fs-2 fw-bold p-2  ">
                   Custom Made Dresses Only For You
                 </h1>
               </div>
-              <div className="col-sm-5 mx-5">
+              <div className="col-sm-5 mx-5" data-aos="zoom-out-up">
                 <p className="fs-5  ">
                   Lorem ipsum dolor sit amet, consectetur adipisicing elit.
                   Inventore dolore possimus perspiciatis sunt! Mollitia, porro.
@@ -54,7 +57,11 @@ function App() {
               </div>
             </main>
             {/* mission vision history */}
-            <main className="row justify-content-center gap-5 mission">
+            <main
+              className="row justify-content-center gap-5 mission "
+              data-aos="zoom-out-down"
+              data-aos-duration="3000"
+            >
               <div className="col-sm-3 shadow homecard p-5">
                 <h1 className="text-center  fs-3">MISSION</h1>
                 <p className="my-5">
@@ -65,7 +72,11 @@ function App() {
                   repellat excepturi alias. Magni, repellat repudiandae!
                 </p>
               </div>
-              <div className="col-sm-3 shadow homecard p-5">
+              <div
+                className="col-sm-3 shadow homecard p-5"
+                data-aos="flip-left"
+                data-aos-duration="3000"
+              >
                 <h1 className="text-center fs-3">VISION</h1>
                 <p className="my-5">
                   {" "}
