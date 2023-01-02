@@ -11,15 +11,13 @@
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
 }
-html,
-body[data-aos-duration="4000"] [data-aos],
-[data-aos][data-aos][data-aos-duration="4000"] {
-  transition-duration: 4000ms;
-}
 
+html,
 body {
   max-width: 100%;
   overflow-x: hidden;
+}
+body {
   background-color: white;
   color: black;
 }
