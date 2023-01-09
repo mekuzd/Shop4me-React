@@ -23,7 +23,7 @@ const Signup = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     let registeredUser = false;
-    Store.map((store) => {
+    Store.find((store) => {
       if (store.email === state.current.email) {
         return (registeredUser = true);
       }

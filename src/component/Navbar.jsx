@@ -21,7 +21,7 @@ const Navbar = () => {
 
   return (
     <nav
-      className={`d-flex bg-warning  d-sm-flex shadow justify-content-around align-items-center     p-3  fixed-top`}
+      className={`d-flex bg-warning  d-sm-flex  justify-content-around align-items-center     p-2  fixed-top`}
     >
       {/* mobile navbar  */}
       <Link to={"/"} className="text-dark fs-1 ">

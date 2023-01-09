@@ -19,7 +19,7 @@ const Login = () => {
   const handleLogin = (e) => {
     e.preventDefault();
     let isregisteredUser = false;
-    Store.map((store) => {
+    Store.find((store) => {
       if (
         store.email === state.current.email &&
         store.password === state.current.password
