@@ -19,6 +19,11 @@ const Navbar = () => {
     document.body.classList.toggle("dark-mode");
   }
 
+  let qtyLength = Cart.map((item) => {
+    return item.Quantity;
+  }).reduce((total, item) => {
+    return total + item;
+  }, 0);
   return (
     <nav
       className={`d-flex bg-warning  d-sm-flex  justify-content-around align-items-center     p-2  fixed-top`}
@@ -31,8 +36,8 @@ const Navbar = () => {
       <div className="d-block d-md-none ms-auto">
         <Link to={"/cart"} className="text-dark   position-relative ">
           <ShoppingCartOutlined style={{ fontSize: "40px" }} />
-          {Cart.length > 0 && (
-            <span className="position-absolute ">{Cart.length}</span>
+          {qtyLength > 0 && (
+            <span className="position-absolute ">{qtyLength}</span>
           )}
         </Link>
       </div>
@@ -64,8 +69,8 @@ const Navbar = () => {
         <div>
           <Link to={"/cart"} className="text-dark   position-relative ">
             <ShoppingCartOutlined style={{ fontSize: "40px" }} />
-            {Cart.length > 0 && (
-              <span className="position-absolute ">{Cart.length}</span>
+            {qtyLength > 0 && (
+              <span className="position-absolute ">{qtyLength}</span>
             )}
           </Link>
         </div>

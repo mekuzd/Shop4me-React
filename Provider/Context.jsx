@@ -41,8 +41,6 @@ const ContextProvider = ({ children }) => {
       });
       setCart(prevCartitem);
       localStorage.setItem("cartItem", JSON.stringify(prevCartitem));
-      setalertMessage("ITEM ALREADY ADDED TO CART HENCE QUANTITY INCREASED");
-      setalert(true);
     } else {
       let newCart = [...Cart, { ...item, Quantity: 1, Total: item.price }];
       setCart(newCart);
