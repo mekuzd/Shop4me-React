@@ -25,13 +25,12 @@ const ContextProvider = ({ children }) => {
 
   const addToCart = (item) => {
     let itemExist = false;
-    if (Cart) {
-      Cart.find((existinItem) => {
-        if (existinItem.id == item.id) {
-          itemExist = true;
-        }
-      });
-    }
+    Cart.find((existinItem) => {
+      if (existinItem.id == item.id) {
+        itemExist = true;
+      }
+    });
+
     if (itemExist) {
       let prevCartitem = Cart.map((previtem) => {
         if (previtem.id == item.id) {
