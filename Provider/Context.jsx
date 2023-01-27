@@ -1,4 +1,5 @@
 import React, { createContext, useState } from "react";
+import { useEffect } from "react";
 
 export const Context = createContext(null);
 
@@ -8,6 +9,10 @@ const ContextProvider = ({ children }) => {
       ? JSON.parse(localStorage.getItem("cartItem"))
       : [],
   );
+
+  useEffect(() => {
+    localStorage.setItem("cartItem", JSON.stringify(Cart));
+  });
 
   const [Store, setStore] = useState(
     localStorage.getItem("users")
@@ -21,7 +26,7 @@ const ContextProvider = ({ children }) => {
   const addToCart = (item) => {
     let itemExist = false;
     if (Cart) {
-      Cart.map((existinItem) => {
+      Cart.find((existinItem) => {
         if (existinItem.id == item.id) {
           itemExist = true;
         }
