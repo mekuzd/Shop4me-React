@@ -24,11 +24,8 @@ const ContextProvider = ({ children }) => {
   const [alertMessage, setalertMessage] = useState("");
 
   const addToCart = (item) => {
-    let itemExist = false;
-    Cart.find((existinItem) => {
-      if (existinItem.id == item.id) {
-        itemExist = true;
-      }
+    let itemExist = Cart.find((existinItem) => {
+      return existinItem.id == item.id;
     });
 
     if (itemExist) {
