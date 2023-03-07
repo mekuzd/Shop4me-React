@@ -32,14 +32,12 @@ const Products = () => {
   };
 
   // handle search input
-  let equalCategory = false;
+
   const handleSubmit = (e) => {
     e.preventDefault();
     if (searchCategory) {
-      category.find((category) => {
-        if (category == searchCategory) {
-          equalCategory = true;
-        }
+      let equalCategory = category.find((category) => {
+        return category == searchCategory;
       });
 
       if (equalCategory) {
