@@ -39,7 +39,6 @@ const Products = () => {
       let equalCategory = category.find((category) => {
         return category == searchCategory;
       });
-
       if (equalCategory) {
         categoryBtn(searchCategory);
       } else {
